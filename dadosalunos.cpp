@@ -11,7 +11,7 @@ int main(){
     cout << "digite seu tamanho " << endl;
     cin >> altura;
 
-    cout << "A sua idade é " << idade << "Seu tamanho é " << altura << endl;
+    cout << "A sua idade é " << idade << "Seu tamanho é esse: " << altura << endl;
 
     return 0;
 
