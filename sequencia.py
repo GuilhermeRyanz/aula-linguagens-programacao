@@ -1,4 +1,4 @@
-numero = int(input)
+numero = int(input())
 sequencia = []
 for i in range(numero):
     sequencia.append(i)
