@@ -7,13 +7,13 @@
 
 texto = input("Digite um texto: ")
 texto = texto.upper()
-tests_junto = texto.join("")
+texto_junto = texto.join("")
 verificacaço = True
 
-texto_invertido = tests_junto[::-1]
+texto_invertido = texto_junto[::-1]
 
-for i in range(len(tests_junto)):
-    if tests_junto[i] != texto_invertido[i]:
+for i in range(len(texto_junto)):
+    if texto_junto[i] != texto_invertido[i]:
         verificacaço = False
 
 if verificacaço == True:
