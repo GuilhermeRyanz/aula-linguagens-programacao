@@ -28,7 +28,7 @@ def marcar_posicao(jogador,linha,coluna):
         jogada_x_l, jogada_x_c = input(f"É a vez do jogador {jogador}, em qual posição você deseja jogar?\n").split()
         jogada_x_c = int(jogada_x_c)
         jogada_x_l = int(jogada_x_l)
-        marcar_posicao("X", jogada_x_l, jogada_x_c)
+        marcar_posicao(jogador, jogada_x_l, jogada_x_c)
 
 imprimir_tabuleiro(tabuleiro_1)
 
