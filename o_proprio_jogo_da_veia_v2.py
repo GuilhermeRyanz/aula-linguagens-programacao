@@ -1,4 +1,6 @@
+import sys
 
+from quem_ganhou_o_jogo_da_veia_v2 import verificar_vencedor_1, verificar_vencedor
 print("="*28)
 print("Bem vindo ao Jogo da veia  |")
 print("="*28)
@@ -21,12 +23,18 @@ def marcar_posicao(jogador,linha,coluna):
         tabuleiro_1[linha][coluna] = jogador
         alter_doc(tabuleiro_1)
         return tabuleiro_1
+        if verificar_vencedor_1() == True:
+            print("Fim de jogo")
+
     else:
         print("entrada invalida")
         jogada_x_l, jogada_x_c = input(f"É a vez do jogador {jogador}, em qual posição você deseja jogar?\n").split()
         jogada_x_c = int(jogada_x_c)
         jogada_x_l = int(jogada_x_l)
         marcar_posicao(jogador, jogada_x_l, jogada_x_c)
+        if verificar_vencedor_1() == True:
+            print("Fim de jogo")
+            sys.exit()
 
 imprimir_tabuleiro(tabuleiro_1)
 
@@ -42,3 +50,9 @@ for vez in range(0,9):
     marcar_posicao(joador,jogada_x_l,jogada_x_c)
 
     imprimir_tabuleiro(tabuleiro_1)
+
+    if verificar_vencedor_1() == True:
+        print("Fim de jogo")
+        sys.exit()
+
+

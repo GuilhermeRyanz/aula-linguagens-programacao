@@ -58,4 +58,3 @@ for indx,linha in enumerate(lista_linhas):
     linhas.append(linha)
 
 verificar_vencedor(linhas)
-
