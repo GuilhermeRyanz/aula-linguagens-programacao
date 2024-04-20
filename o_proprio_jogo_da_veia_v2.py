@@ -1,5 +1,4 @@
 import sys
-
 from quem_ganhou_o_jogo_da_veia_v2 import verificar_vencedor_1, verificar_vencedor
 print("="*28)
 print("Bem vindo ao Jogo da veia  |")

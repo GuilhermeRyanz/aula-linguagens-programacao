@@ -1,6 +1,6 @@
 def verificar_vencedor(linhas):
 
-    if linhas[0][0] == linhas[1][1] == linhas[2][2] == linhas[0][0] == linhas[1][1] == linhas[2][2] == linhas[0][0] ==linhas[1][1] == linhas[2][2] == " ":
+    if linhas[0][0] == linhas[0][1] == linhas[0][2] == linhas[0][0] == linhas[1][0] == linhas[1][1] == linhas[1][2] ==linhas[2][0] == linhas[2][1] == linhas[2][2] == " ":
         print("nao nada no jogo da veia")
 
     elif linhas[0][0] == "X" and linhas[0][1] == "X" and linhas[0][2] == "X":
