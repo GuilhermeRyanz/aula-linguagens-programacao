@@ -1,3 +1,4 @@
+import os
 import sys
 from quem_ganhou_o_jogo_da_veia_v2 import verificar_vencedor_1, verificar_vencedor
 print("="*28)
@@ -38,6 +39,7 @@ def marcar_posicao(jogador,linha,coluna):
 imprimir_tabuleiro(tabuleiro_1)
 
 for vez in range(0,9):
+
     if vez%2 != 0:
         joador = "O"
     else:

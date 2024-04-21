@@ -57,11 +57,12 @@ def verificar_vencedor(linhas):
         print("O O GANHOU")
         return True
 
-    elif linhas[0][0] == " " or linhas[0][1] == " " or linhas[0][2] == " " or linhas[1][0] == " " or linhas[1][1] == " " or linhas[1][2] or linhas [2][0] == " " or linhas[2][1] == " " or linhas[2][2] == " ":
+    elif linhas[0][0] == " " or linhas[0][1] == " " or linhas[0][2] == " " or linhas[1][0] == " " or linhas[1][1] == " " or linhas[1][2] == " " or linhas [2][0] == " " or linhas[2][1] == " " or linhas[2][2] == " ":
         print("O jogo ainda não foi finalizado! ")
 
     else:
         print("Empate")
+        return True
 
 
 def verificar_vencedor_1():
