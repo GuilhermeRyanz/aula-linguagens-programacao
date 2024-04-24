@@ -1,8 +1,14 @@
+import locale
+locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
 linhas_selecionadas = []
 carrinho = []
 carrinho_atual = []
 condicao_parada = False
 condicao_fim = False
+
+def conversor_moeda(p):
+    preco_format = locale.currency(p, grouping=True, symbol=False)
+    return preco_format
 
 def checar_carrinho():
     total = 0
@@ -12,10 +18,11 @@ def checar_carrinho():
     for prod in carrinho_atual:
         nome, categoria, preco, quantidade, cod_produto = prod.strip("\n").split(",")
         total = total + float(preco)
+        preco = float(preco)
         quantidade_itens += 1
-        print(f"{cod_produto} {nome} {categoria} {preco}")
+        print(f"{cod_produto} {nome} {categoria} R${conversor_moeda(preco)}")
     print(f"Quantidade de itens : {quantidade_itens}")
-    print(f"Total do carrinho: {total}")
+    print(f"Total do carrinho: {conversor_moeda(total)}")
 
     return
 
@@ -32,6 +39,19 @@ def adicionar_ao_carrinho():
     print("Item fora da lista de procura")
     return False
 
+def retirar_do_carrinho():
+    print("Qual produto deseja retirar do carrinho? ")
+    checar_carrinho()
+    prod_selecionado = str(input())
+    for indx, i in enumerate(carrinho_atual):
+        nome, categoria, preco, quantidade, cod_produto = i.strip("\n").split(",")
+        if prod_selecionado == cod_produto:
+            carrinho.remove(carrinho[indx])
+            print("Produto retirado do carrinho!")
+            return carrinho
+        print("Item nao esta no carrinho!")
+        return False
+
 def busca_lista (busca):
     with open("produtos - produtos.csv","r", encoding='utf-8') as lista_produtos:
         next(lista_produtos)
@@ -43,24 +63,28 @@ def busca_lista (busca):
             nome = nome.lower()
             categoria = categoria.lower()
 
-            if busca.lower() in nome or busca.upper() == cod_produto or busca.lower() in categoria.lower():
+            if busca.lower() in nome or busca.upper() == cod_produto or busca.lower() in categoria:
                     linhas_selecionadas.append(linha)
 
         print("Codigo| Produto| Preco")
         for indx,selecao in enumerate(linhas_selecionadas[:5]):
             nome, categoria, preco, quantidade, cod_produto= selecao.strip("\n").split(",")
-            print(cod_produto, nome, preco)
+            preco = float(preco)
+            print(f"{cod_produto} {nome} R${conversor_moeda(preco)}")
 
         return linhas_selecionadas
 
 
 while condicao_fim == False:
-    print("Menu de Opções:\n"
-          "Fazer uma busca [1]\n"
-          "Adicionar ao carrinho [2]\n"
-          "Finalizar compra [3]")
+    print("===============================================")
+    print("Menu de Opções:                               |")
+    print("Fazer uma busca [1]                           |")
+    print("Adicionar ao carrinho [2]                     |")
+    print("Finalizar compra [3]                          |")
     if len(carrinho) > 0:
-        print("Checar Carrinho [4]\n")
+        print("Checar Carrinho [4]                           |")
+        print("Retirar item do carrinho [5]                  |")
+    print("===============================================")
     desicao = int(input())
     if desicao == 1:
         busca = input("Digite sua chave de busca: ")
@@ -73,15 +97,9 @@ while condicao_fim == False:
         condicao_fim = True
     elif desicao == 4:
         checar_carrinho()
-
+    elif desicao == 5:
+        condicao_parada = False
+        while condicao_parada == False:
+            carrinho_atual = condicao_parada = retirar_do_carrinho()
 checar_carrinho()
 print("Compra finalizada")
-
-
-
-
-
-
-
-
-
