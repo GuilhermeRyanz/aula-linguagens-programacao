@@ -2,7 +2,6 @@ import locale
 locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
 linhas_selecionadas = []
 carrinho = []
-carrinho_atual = []
 condicao_parada = False
 condicao_fim = False
 
@@ -14,15 +13,15 @@ def checar_carrinho():
     total = 0
     quantidade_itens = 0
     print("Carinho:")
-    print("Código| Produto| Categoria | Preço ")
-    for prod in carrinho_atual:
+    print("Código| Produto| Categoria| Preço ")
+    for prod in carrinho:
         nome, categoria, preco, quantidade, cod_produto = prod.strip("\n").split(",")
         total = total + float(preco)
         preco = float(preco)
         quantidade_itens += 1
         print(f"{cod_produto} {nome} {categoria} R${conversor_moeda(preco)}")
     print(f"Quantidade de itens : {quantidade_itens}")
-    print(f"Total do carrinho: {conversor_moeda(total)}")
+    print(f"Total do carrinho: R${conversor_moeda(total)}")
 
     return
 
@@ -40,17 +39,18 @@ def adicionar_ao_carrinho():
     return False
 
 def retirar_do_carrinho():
-    print("Qual produto deseja retirar do carrinho? ")
     checar_carrinho()
+    print("Qual produto deseja retirar do carrinho? ")
     prod_selecionado = str(input())
-    for indx, i in enumerate(carrinho_atual):
+    for indx, i in enumerate(carrinho):
         nome, categoria, preco, quantidade, cod_produto = i.strip("\n").split(",")
         if prod_selecionado == cod_produto:
             carrinho.remove(carrinho[indx])
             print("Produto retirado do carrinho!")
-            return carrinho
-        print("Item nao esta no carrinho!")
-        return False
+            return True
+
+    print("Item nao esta no carrinho!")
+    return False
 
 def busca_lista (busca):
     with open("produtos - produtos.csv","r", encoding='utf-8') as lista_produtos:
@@ -92,7 +92,7 @@ while condicao_fim == False:
     elif desicao == 2:
         condicao_parada = False
         while condicao_parada == False:
-           carrinho_atual = condicao_parada = adicionar_ao_carrinho()
+            condicao_parada = adicionar_ao_carrinho()
     elif desicao == 3:
         condicao_fim = True
     elif desicao == 4:
@@ -100,6 +100,6 @@ while condicao_fim == False:
     elif desicao == 5:
         condicao_parada = False
         while condicao_parada == False:
-            carrinho_atual = condicao_parada = retirar_do_carrinho()
+            condicao_parada = retirar_do_carrinho()
 checar_carrinho()
-print("Compra finalizada")
+print("Compra finalizada.")
