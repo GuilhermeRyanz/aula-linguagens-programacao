@@ -75,7 +75,6 @@ def busca_lista (busca):
 
         return linhas_selecionadas
 
-
 while condicao_fim == False:
     print("===============================================")
     print("Menu de Opções:                               |")
