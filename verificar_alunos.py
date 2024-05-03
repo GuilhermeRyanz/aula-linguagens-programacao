@@ -130,23 +130,23 @@ def verificacao_personalisada():
             verificacao_1 = False
 
 
-while entrada !=  4:
-
-    print("nova entrada de dados [1]")
-    print("verificar porcentagem atual [2]")
-    print("verificacao personalizada [3]")
-    print("Sair [4]")
-    entrada = int(input())
-
-    if entrada == 1:
-        nova_entrada()
-    elif entrada == 2:
-        verificar_porcentagem_alunos()
-    elif entrada == 3:
-        verificacao_personalisada()
-
-    elif entrada == 4:
-        print("saindo")
-
-    else:
-        print("entrada invalida")
+# while entrada !=  4:
+#
+#     print("nova entrada de dados [1]")
+#     print("verificar porcentagem atual [2]")
+#     print("verificacao personalizada [3]")
+#     print("Sair [4]")
+#     entrada = int(input())
+#
+#     if entrada == 1:
+#         nova_entrada()
+#     elif entrada == 2:
+#         verificar_porcentagem_alunos()
+#     elif entrada == 3:
+#         verificacao_personalisada()
+#
+#     elif entrada == 4:
+#         print("saindo")
+#
+#     else:
+#         print("entrada invalida")
