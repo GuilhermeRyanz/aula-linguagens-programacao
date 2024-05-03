@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import messagebox
 from verificar_alunso_tinker import nova_entrada, verificar_porcentagem_alunos, verificacao_personalisada
 
-def entrada_dados(entry_manha, entry_tarde, entry_noite, entry_data):
+def entrada_dados(entry_manha, entry_tarde, entry_noite, entry_data,janela):
     try:
         turno_manha = int(entry_manha.get())
         turno_tarde = int(entry_tarde.get())
@@ -12,6 +12,8 @@ def entrada_dados(entry_manha, entry_tarde, entry_noite, entry_data):
         nova_entrada(turno_manha, turno_tarde, turno_noite, date)
 
         messagebox.showinfo("Sucesso", "Dados salvos com sucesso!")
+
+        janela.destroy()
 
     except ValueError:
         messagebox.showerror("Erro", "Entrada inválida! Certifique-se de fornecer números inteiros.")
@@ -40,9 +42,8 @@ def janela_entrada_dados():
     entry_data = tk.Entry(janela)
     entry_data.pack()
 
-    botao_salvar = tk.Button(janela, text="Salvar", command=lambda: entrada_dados(entry_manha, entry_tarde, entry_noite, entry_data))
+    botao_salvar = tk.Button(janela, text="Salvar", command=lambda: entrada_dados(entry_manha, entry_tarde, entry_noite, entry_data,janela))
     botao_salvar.pack(pady=5)
-    janela.mainloop()
 
 def janela_principal():
     raiz = tk.Tk()
