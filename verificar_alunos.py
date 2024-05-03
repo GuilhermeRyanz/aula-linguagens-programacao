@@ -70,10 +70,11 @@ def verificar_porcentagem_alunos():
             total_t2 += t2
             total_t3 += t3
 
-    soma = total_t3 + total_t2 + total_t3
-    porcent_1 = total_t1 * 100/soma
-    porcent_2 = total_t2 * 100/soma
-    porcent_3 = total_t3 * 100/soma
+    soma = total_t3 + total_t2 + total_t1
+
+    porcent_1 = total_t1/soma * 100
+    porcent_2 = total_t2/soma * 100
+    porcent_3 = total_t3/soma * 100
 
     print("------------------------------------------------------")
     print("Prcentagem de alunos por turno")
@@ -84,9 +85,52 @@ def verificar_porcentagem_alunos():
 
 
 def verificacao_personalisada():
-    print()
 
-while entrada != "4":
+    total_t1 = 0
+    total_t2 = 0
+    total_t3 = 0
+
+    verificacao_1 = False
+
+    while verificacao_1 == False:
+        try:
+            busca = str(input("Digide a data de busca: "))
+
+            with open("alunos_academia.csv", "r") as arquivos_alunos:
+                next(arquivos_alunos)
+                linhas_alunos = arquivos_alunos.readlines()
+
+                for linha in linhas_alunos:
+                    t1, t2, t3, data = linha.strip("\n").split(",")
+                    if busca == data[3:]:
+                        t1 = int(t1)
+                        t2 = int(t2)
+                        t3 = int(t3)
+
+                        total_t1 += t1
+                        total_t2 += t2
+                        total_t3 += t3
+
+                soma = total_t3 + total_t2 + total_t1
+
+                porcent_1 = total_t1 / soma * 100
+                porcent_2 = total_t2 / soma * 100
+                porcent_3 = total_t3 / soma * 100
+
+                print("------------------------------------------------------")
+                print("Prcentagem de alunos por turno")
+                print(f"Porcentagem de alunos no turno da manha: {porcent_1:.2f}%")
+                print(f"Porcentagem de alunos no turno da tarde: {porcent_2:.2f}%")
+                print(f"Porcentagem de alunos no turno da noite: {porcent_3:.2f}%")
+                print("------------------------------------------------------")
+                verificacao_1 = True
+
+        except:
+            print("Entrada invalida! ")
+            verificacao_1 = False
+
+
+while entrada !=  4:
 
     print("nova entrada de dados [1]")
     print("verificar porcentagem atual [2]")
@@ -100,5 +144,9 @@ while entrada != "4":
         verificar_porcentagem_alunos()
     elif entrada == 3:
         verificacao_personalisada()
+
+    elif entrada == 4:
+        print("saindo")
+
     else:
         print("entrada invalida")
