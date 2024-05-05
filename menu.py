@@ -33,7 +33,7 @@ while entrada_menu != 0:
             else:
                 print("entrada invalida")
 
+    elif entrada_menu == 0:
+        print("Obrigado por usar o programa")
 
 
-nova_entrada()
-verificar_porcentagem_alunos()

@@ -9,10 +9,10 @@ def nova_entrada():
         while verificar_1 == False:
             try:
                 turno_manha = int(input("Digite a quantidade de alunos do turno da manha: "))
-                if turno_manha > 0:
+                if turno_manha >= 0:
                     verificar_1 = True
             except:
-                print("Entrada invalida Apenas numeros inteiro positivos permitidos.")
+                print("Entrada invalida! Apenas numeros inteiro positivos permitidos.")
                 verificar_1 = False
 
 
@@ -20,17 +20,17 @@ def nova_entrada():
         while verificar_2 == False:
             try:
                 turno_tarde = int(input("Digite a quantidade de alunos do turno da tarde: "))
-                if turno_tarde > 0:
+                if turno_tarde >= 0:
                     verificar_2 = True
             except:
-                print("Entrada invalida Apenas numeros inteiro positivos permitidos,")
+                print("Entrada invalida Apenas numeros inteiro positivos permitidos.")
                 verificar_2 = False
 
         verificar_3 = False
         while verificar_3 == False:
             try:
                 turno_noite = int(input("Digite a quantidade de alunos do turno da noite: "))
-                if turno_noite > 0:
+                if turno_noite >= 0:
                     verificar_3 = True
             except:
                 print("Entrada invalida Apenas numeros inteiro positivos permitidos.")
@@ -77,7 +77,7 @@ def verificar_porcentagem_alunos():
     porcent_3 = total_t3/soma * 100
 
     print("------------------------------------------------------")
-    print("Prcentagem de alunos por turno")
+    print("Prcentagem de alunos por turno:")
     print(f"Porcentagem de alunos no turno da manha: {porcent_1:.2f}%")
     print(f"Porcentagem de alunos no turno da tarde: {porcent_2:.2f}%")
     print(f"Porcentagem de alunos no turno da noite: {porcent_3:.2f}%")
@@ -94,7 +94,7 @@ def verificacao_personalisada():
 
     while verificacao_1 == False:
         try:
-            busca = str(input("Digide a data de busca: "))
+            busca = str(input("Digide a data de busca MM/AAAA: "))
 
             with open("alunos_academia.csv", "r") as arquivos_alunos:
                 next(arquivos_alunos)
